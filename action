@@ -1,12 +1,11 @@
 #!/bin/sh
 
-SCRIPT_DIR=`dirname $0`
 ACTION=$1
 CACHE_DIR=$2
 DB_DIR=$3
 shift 3
 DB_LIST=$*
-RDIFF_PATH="${SCRIPT_DIR}/sqlite3-rdiff"
+RDIFF_PATH="../sqlite3-rdiff"
 
 cd $CACHE_DIR || {
     echo "Error! Cannot change directory to $CACHE_DIR"
@@ -40,7 +39,7 @@ for EACH_DB in $DB_LIST; do
                 continue
             }
 
-            sudo $RDIFF_PATH --rows-per-hash 18 signature $DB $SIGN_FILE;;
+            sudo ../sqlite3-rdiff --rows-per-hash 18 signature $DB $SIGN_FILE;;
 
         delta)
             [ ! -s $SIGN_FILE ] && {
@@ -56,7 +55,7 @@ for EACH_DB in $DB_LIST; do
                 continue
             }
 
-            sudo $RDIFF_PATH delta $SIGN_FILE $DB $DELTA_FILE;;
+            sudo ../sqlite3-rdiff delta $SIGN_FILE $DB $DELTA_FILE;;
 
         patch)
            [ ! -f $DELTA_FILE ] && {
@@ -71,6 +70,6 @@ for EACH_DB in $DB_LIST; do
                 continue
             }
 
-            sudo $RDIFF_PATH patch $DB $DELTA_FILE $DB;;
+            sudo ../sqlite3-rdiff patch $DB $DELTA_FILE $DB;;
     esac
 done
