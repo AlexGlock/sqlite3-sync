@@ -1,3 +1,4 @@
 # ignore production .config files
 *.conf
-
+# ignore cache content
+cache/*

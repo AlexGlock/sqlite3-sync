@@ -2,16 +2,16 @@
 Live SQLite3 database master-slave replication with [sqlite3-rdiff](https://github.com/moisseev/sqlite3-rdiff) using rsync over SSH
 
 The program replicates a local (master) SQLite3 database to a remote one (slave) in bandwith-effective manner.
+This fork contains the rdiff dependency (https://github.com/moisseev/sqlite3-rdiff) which is needed in order to run sqlite3-sync
 
 ## Requirements
 
-On both local and remote sides:
-- [sqlite3-rdiff](https://github.com/moisseev/sqlite3-rdiff) (and its dependencies)
+On both host and client sides:
 - rsync
 
 ## Installation
 
-Place the program on the `master` side. Create from the sample and tune your own configuration file:
+Place the program on the `host` side. Create from the sample and tune your own configuration file:
 ```sh
 > cp sqlite3-sync.conf.sample sqlite3-sync.conf
 ```
@@ -72,7 +72,7 @@ The key's randomart image is:
 |+B  =Eo+o.       |
 |Xo=+..=+.        |
 +----[SHA256]-----+
-> ssh-copy-id -i ~/.ssh/id_rsa.pub -p 22222 remote.example.com
+> ssh-copy-id -i ~/.ssh/id_rsa.pub remote.example.com
 Password for username@remote.example.com:
 ```
 
