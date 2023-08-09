@@ -1,5 +1,7 @@
 #!/bin/sh
 
+HOST=$1
+
 SCRIPT_DIR=`dirname $0`
 cd $SCRIPT_DIR || {
     echo "Error! Cannot change directory to $SCRIPT_DIR"
