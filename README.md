@@ -15,7 +15,8 @@ Install on both host and client side:
 
 depends on extensions:
 
-*sqlite-md5 extension lib (https://github.com/moisseev/sqlite-md5) **included in this repo**
+*sqlite-md5 extension lib (https://github.com/moisseev/sqlite-md5) 
+**the 64bit build is included in master and 32bit build in the slave branch**
 	
 ## Installation
 
