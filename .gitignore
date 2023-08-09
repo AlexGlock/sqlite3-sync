@@ -2,3 +2,5 @@
 *.conf
 # ignore cache content
 cache/*
+# ignore save files
+*.save

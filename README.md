@@ -6,9 +6,17 @@ This fork contains the rdiff dependency (https://github.com/moisseev/sqlite3-rdi
 
 ## Requirements
 
-On both host and client sides:
-- rsync
+Install on both host and client side:
 
+    sudo apt-get install rsync
+    sudo apt-get install tcl
+    sudo apt-get install libsqlite3-dev
+    sudo apt-get install libsqlite3-tcl
+
+depends on extensions:
+
+*sqlite-md5 extension lib (https://github.com/moisseev/sqlite-md5) **included in this repo**
+	
 ## Installation
 
 Place the program on the `host` side. Create from the sample and tune your own configuration file:
@@ -22,15 +30,21 @@ Directory layouts example:
 ```sh
 Local master:
 
-/home/user/sqlite3-sync/
+/sqlite3-sync/
 ├── cache/
 ├── action*
+├── sqlite3-rdiff*
+├── sqlite3-rdiff-checksize*
+├── libsqlitemd5.so*
 ├── sqlite3-sync*
 └── sqlite3-sync.conf
 
 Remote slave:
 
 /home/user/sqlite3-sync/
+├── sqlite3-rdiff*
+├── sqlite3-rdiff-checksize*
+├── libsqlitemd5.so*
 └── cache/
 ```
 
