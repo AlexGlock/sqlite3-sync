@@ -1,12 +1,12 @@
 # sqlite3-sync
 Live SQLite3 database master-slave replication with [sqlite3-rdiff](https://github.com/moisseev/sqlite3-rdiff) using rsync over SSH
 
-The program replicates a local (master) SQLite3 database to a remote one (slave) in bandwith-effective manner.
-This fork contains the rdiff dependency (https://github.com/moisseev/sqlite3-rdiff) which is needed in order to run sqlite3-sync
+The program replicates a local (master) SQLite3 database and its related media to a remote one (slave) in bandwith-effective manner.
+This fork contains the rdiff dependency (https://github.com/moisseev/sqlite3-rdiff) for a 64bit ARM Slave and a 64bit x86 Master which are needed in order to run sqlite3-sync.
 
 ## Requirements
 
-Install on both host and client side:
+Install on both Master and Slave side:
 
     sudo apt-get install rsync
     sudo apt-get install tcl
@@ -16,11 +16,11 @@ Install on both host and client side:
 depends on extensions:
 
 *sqlite-md5 extension lib (https://github.com/moisseev/sqlite-md5) 
-**the 64bit build is included in master and 32bit build in the slave branch**
+**the x86 build is included in master and ARM64 build in the slave branch**
 	
 ## Installation
 
-Place the program on the `host` side. Create from the sample and tune your own configuration file:
+Place the program on the `Master` side. Create from the sample and tune your own configuration file:
 ```sh
 > cp sqlite3-sync.conf.sample sqlite3-sync.conf
 ```
@@ -91,9 +91,16 @@ The key's randomart image is:
 Password for username@remote.example.com:
 ```
 
+In order to avoid the HostKeyChecking one can also apply a custom ssh config. Just add a file **config** to your users `` .ssh `` folder with:
+
+```
+Host *
+    StrictHostKeyChecking no
+```
+
 ## Usage
 
-To start replication run the `sqlite3-sync` script.
+To start replication run the `sqlite3-sync` script with the qualified Slave Address as inpur argument (i.e **./sqlite3-sync pi@myraspberryslave.local**).
 
 ## Bandwith usage efficiency
 

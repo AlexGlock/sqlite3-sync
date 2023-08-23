@@ -1,11 +1,17 @@
 #!/bin/sh
 
 # Remote slave (connect via SSH)
-HOST="slave.example.com"
+# default ssh port
 PORT=22
-
+# default DB name for django apps
+DB_LIST="db.sqlite3"
+# cache dir included in repositories
 MASTER_CACHE_DIR="$SCRIPT_DIR/cache"
-SLAVE_CACHE_DIR="~/sqlite3-sync/cache"
-MASTER_DB_DIR="/var/db/rspamd"
-SLAVE_DB_DIR="/var/db/rspamd"
-DB_LIST="bayes.ham.sqlite bayes.spam.sqlite fuzzy.db"
+SLAVE_CACHE_DIR="/sqlite3-sync/cache"
+
+# CHANGE PATHS ACCORDING TO YOUR DB/MEDIA LOCATION:
+MASTER_DB_DIR="/PATH/TO/MASTER/DB/DIR"
+SLAVE_DB_DIR="/PATH/TO/SLAVE/DB/DIR"
+
+MASTER_MEDIA_DIR="/PATH/TO/MASTER/MEDIA/DIR"
+SLAVE_MEDIA_DIR="/PATH/TO/SLAVE/MEDIA/DIR"

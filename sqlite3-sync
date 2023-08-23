@@ -34,5 +34,11 @@ echo -e "\n[ Master -> Slave ] Uploading deltas ...\n"
 rsync -avz --progress --bwlimit=128 $MASTER_CACHE_DIR/*.delta $HOST:${SLAVE_CACHE_DIR} \
     || exit 1
 
+echo -e "\n[ Master -> Slave ] Updating media ...\n"
+# --bwlimit=128 -> 128KiB -> 1Mbit/s
+# echo -e $HOST:${SLAVE_MEDIA_DIR}
+rsync -avu --delete $MASTER_MEDIA_DIR/ $HOST:${SLAVE_MEDIA_DIR} \
+    || exit 1
+
 echo -e "\n[ ---- Slave ---- ] Patching databases ...\n"
 ssh -p $PORT $HOST "sudo sh -s" < ./action patch $SLAVE_CACHE_DIR $SLAVE_DB_DIR $DB_LIST
